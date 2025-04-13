@@ -8,3 +8,31 @@ Database Design Programming with SQL Group Assignment
 ![Image Alt](https://github.com/S-kanti/Database-group-assignment/blob/72fd020808b5d50b00bbbe8afe23902242ffea10/book_store%20erd.png)
 
 ## Contributors
+<table>
+	<tbody>
+		<tr>      
+            <td align="center">
+                <a href="https://github.com/sirarwa">
+                    <img src="https://avatars.githubusercontent.com/u/65830115?v=4" width="100;" alt="AAbide"/>
+                    <br />
+                    <sub><b>David Arwa</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/Mochoni23">
+                    <img src="https://avatars.githubusercontent.com/u/200072554?v=4" width="100;" alt="Chege-Gitiche"/>
+                    <br />
+                    <sub><b>Mochoni23</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/S-kanti">
+                    <img src="https://avatars.githubusercontent.com/u/169155874?v=4" width="100;" alt="felexkuria"/>
+                    <br />
+                    <sub><b>Felex Kuria</b></sub>
+                </a>
+            </td>
+		</tr>
+		
+
+</table>
