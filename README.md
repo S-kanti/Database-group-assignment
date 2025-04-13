@@ -22,14 +22,14 @@ Database Design Programming with SQL Group Assignment
                 <a href="https://github.com/Mochoni23">
                     <img src="https://avatars.githubusercontent.com/u/200072554?v=4" width="100;" alt="Chege-Gitiche"/>
                     <br />
-                    <sub><b>Mochoni23</b></sub>
+                    <sub><b>Mochoni Abigael</b></sub>
                 </a>
             </td>
             <td align="center">
                 <a href="https://github.com/S-kanti">
                     <img src="https://avatars.githubusercontent.com/u/169155874?v=4" width="100;" alt="felexkuria"/>
                     <br />
-                    <sub><b>Felex Kuria</b></sub>
+                    <sub><b>Kanti Sarah</b></sub>
                 </a>
             </td>
 		</tr>
