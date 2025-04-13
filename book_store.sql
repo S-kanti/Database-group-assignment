@@ -16,16 +16,16 @@ CREATE TABLE Address_Status (
 
 -- 3. Create the Book_Languages table
 CREATE TABLE Book_Languages (
-    Language_id INT PRIMARY KEY,
-    Lang VARCHAR(50)
+    language_id INT PRIMARY KEY,
+    language_name VARCHAR(50)
 );
 
 -- 4. Create the Authors table
 CREATE TABLE Authors (
-    Author_id INT PRIMARY KEY,
+    author_id INT PRIMARY KEY,
     name VARCHAR(255),
-    Age INT,
-    Gender VARCHAR(50)
+    age INT,
+    gender VARCHAR(50)
 );
 
 -- 5. Create the Publishers table
@@ -38,44 +38,44 @@ CREATE TABLE Publishers (
 
 -- 6. Create the Books table
 CREATE TABLE Books (
-    Book_id INT PRIMARY KEY,
-    Author_id INT,
-    Language_id INT,
-    Stock_quantity INT,
-    Year_of_publish INT,
-    Publisher_id INT,
-    Price DECIMAL,
-    FOREIGN KEY (Author_id) REFERENCES Authors(Author_id),
-    FOREIGN KEY (Language_id) REFERENCES Book_Languages(Language_id),
-    FOREIGN KEY (Publisher_id) REFERENCES Publishers(Publisher_id)
+    book_id INT PRIMARY KEY,
+    author_id INT,
+    language_id INT,
+    stock_quantity INT,
+    year_of_publish INT,
+    publisher_id INT,
+    price DECIMAL,
+    FOREIGN KEY (Author_id) REFERENCES authors(author_id),
+    FOREIGN KEY (Language_id) REFERENCES book_Languages(language_id),
+    FOREIGN KEY (Publisher_id) REFERENCES publishers(publisher_id)
 );
 
 -- 7. Create the Book_Author table (if needed for many-to-many)
 CREATE TABLE Book_Author (
-    Book_id INT,
-    Author_id INT,
-    FOREIGN KEY (Book_id) REFERENCES Books(Book_id),
-    FOREIGN KEY (Author_id) REFERENCES Authors(Author_id)
+    book_id INT,
+    author_id INT,
+    FOREIGN KEY (book_id) REFERENCES Books(book_id),
+    FOREIGN KEY (author_id) REFERENCES Authors(author_id)
 );
 
 -- 8. Create the Customers table
 CREATE TABLE Customers (
-    Customer_id INT PRIMARY KEY,
-    Customer_Name VARCHAR(255),
-    Age INT,
-    Email VARCHAR(255),
-    Phone VARCHAR(20)
+    customer_id INT PRIMARY KEY,
+    customer_Name VARCHAR(255),
+    age INT,
+    email VARCHAR(255),
+    phone VARCHAR(20)
 );
 
 -- 9. Create the Addresses table
 CREATE TABLE Addresses (
-    Address_id INT PRIMARY KEY,
-    Country_id INT,
-    Street VARCHAR(255),
-    City VARCHAR(100),
-    State VARCHAR(100),
-    Postal_code VARCHAR(20),
-    FOREIGN KEY (Country_id) REFERENCES Countries(country_id)
+    address_id INT PRIMARY KEY,
+    country_id INT,
+    street VARCHAR(255),
+    city VARCHAR(100),
+    state VARCHAR(100),
+    postal_code VARCHAR(20),
+    FOREIGN KEY (country_id) REFERENCES Countries(country_id)
 );
 
 -- 10. Create the Customer_Address table
@@ -102,7 +102,7 @@ CREATE TABLE Order_Status (
 );
 
 -- 13. Create the customer_orders table
-CREATE TABLE customer_orders (
+CREATE TABLE Customer_orders (
     order_id INT PRIMARY KEY AUTO_INCREMENT,
     customer_id INT,
     order_date DATE,
