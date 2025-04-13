@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 -- Create and work on the bookStore database
 CREATE DATABASE BookStoreDB;
 USE BookStoreDB;
@@ -6,6 +7,27 @@ USE BookStoreDB;
 CREATE TABLE Countries (
     Country_ID INT PRIMARY KEY AUTO_INCREMENT,
     Country_Name VARCHAR(255)
+=======
+-- Create the boook_store database
+CREATE DATABASE bookStore;
+
+--1. Create the Books table 
+CREATE TABLE Books (
+    -- Unique identifier for each book.
+    Book_id INT PRIMARY KEY,
+    -- Foreign key referencing the Author_id in the Authors table.
+    Author_id INT REFERENCES Authors (Author_id),
+    -- Foreign key referencing the Language-id in the Languages table.
+    Language_id INT,
+    -- The number of copies of the book in stock.
+    Stock_quantity INT,
+    -- The year the book was published.
+    Year_of_publish INT,
+    -- Foreign key referencing publisher-id table.
+    Publisher_id INT REFERENCES Publishers (publisher_id),
+    -- The price of the book.
+    Price DECIMAL
+>>>>>>> f6f04c138d8f9c420b5e1b8d6b9b61f5f07125a7
 );
 
 -- 2. Create the Address_Status table
@@ -69,6 +91,7 @@ CREATE TABLE Customers (
 
 -- 9. Create the Addresses table
 CREATE TABLE Addresses (
+<<<<<<< HEAD
     Address_ID INT PRIMARY KEY,
     Country_ID INT,
     Street VARCHAR(255),
@@ -196,3 +219,90 @@ SELECT os.status_name, COUNT(*) AS Total_Orders
 FROM Customer_Orders co
 JOIN Order_Status os ON co.Order_Status_ID = os.Order_Status_ID
 GROUP BY os.Status_Name;
+=======
+    -- Unique identifier for each address
+    Address_id INT PRIMARY KEY, 
+    -- Foreign key referencing the Countries table
+    Country_id INT REFERENCES Countries (country_id),             
+    -- Street address
+    Street VARCHAR(255), 
+     -- Name of the city       
+    City VARCHAR(100),  
+    --Name of the state
+    State VARCHAR(100),  
+    --Postal code       
+    Postal_code VARCHAR(20),
+);
+
+
+
+USE bookstore; 
+ 
+CREATE TABLE Customer_Address(
+    customer_id INT,
+	address_id INT,
+	address_status_id INT,
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+	FOREIGN KEY (address_id) REFERENCES Addresses(address_id),
+    FOREIGN KEY (address_status_id ) REFERENCES Address_Status(address_status_id )
+    );
+    
+CREATE TABLE Address_Status (
+    address_status_id INT PRIMARY KEY AUTO_INCREMENT,
+    status_name VARCHAR(255)
+    );
+    
+CREATE  TABLE Countries(
+    country_id INT PRIMARY KEY AUTO_INCREMENT,
+    countryName VARCHAR(255)
+    );
+    
+CREATE TABLE customer_orders(
+    order_id INT PRIMARY KEY AUTO_INCREMENT,
+    customer_id INT,
+    order_date DATE,
+    shipping_method_id INT,
+    order_status_id INT,
+	FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+	FOREIGN KEY (shipping_method_id) REFERENCES Shipping_Method(shipping_method_id),
+    FOREIGN KEY (order_status_id ) REFERENCES Order_Status(order_status_id )
+    
+    );
+    
+CREATE TABLE Order_Lines(
+     order_line_id INT PRIMARY KEY AUTO_INCREMENT,
+     order_id INT,
+     book_id INT,
+     quantity INT,
+	 unit_price DECIMAL(10,2),
+     FOREIGN KEY ( order_id) REFERENCES customer_orders( order_id),
+	 FOREIGN KEY (book_id ) REFERENCES book(book_id )
+);
+CREATE TABLE Order_History(
+     order_history_id INT PRIMARY KEY AUTO_INCREMENT,
+     order_id  INT,
+     order_status_id INT,
+	 status_date DATETIME,
+	 FOREIGN KEY ( order_id) REFERENCES customer_orders( order_id),
+	 FOREIGN KEY (order_status_id ) REFERENCES OrderStatus(order_status_id )
+);
+ 
+ CREATE TABLE Shipping_Method (
+      shipping_method_id INT PRIMARY KEY AUTO_INCREMENT,
+      method_name VARCHAR(255),
+	  cost DECIMAL(10,2)
+ );
+ 
+ CREATE TABLE Order_Status (
+       order_status_id INT PRIMARY KEY AUTO_INCREMENT,
+       status_name VARCHAR(255)
+ );
+        
+
+    
+
+
+  
+
+
+>>>>>>> f6f04c138d8f9c420b5e1b8d6b9b61f5f07125a7
