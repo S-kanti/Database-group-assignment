@@ -5,7 +5,7 @@ This project designs and implements a relational database schema for managing a 
 Database Design Programming with SQL Group Assignment
 
 ### ERD
-![Image Alt](https://github.com/S-kanti/Database-group-assignment/blob/72fd020808b5d50b00bbbe8afe23902242ffea10/book_store%20erd.png)
+![Image Alt](https://github.com/S-kanti/Database-group-assignment/blob/d8967d4bbd49c1121e1a126942035cf6d78efea4/book_store%20erd.png)
 
 ## Contributors
 <table>
