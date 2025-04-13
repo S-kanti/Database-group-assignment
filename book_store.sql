@@ -133,3 +133,49 @@ CREATE TABLE Order_History (
     FOREIGN KEY (order_id) REFERENCES customer_orders(order_id),
     FOREIGN KEY (order_status_id) REFERENCES Order_Status(order_status_id)
 );
+
+-- Managing database access through user groups and roles to ensure security
+
+USE bookstore; 
+
+CREATE ROLE admin;
+CREATE ROLE sales;
+CREATE ROLE manager;
+CREATE ROLE customer_care;
+
+-- Create users
+CREATE USER 'sarah'@'%' IDENTIFIED BY 'password123';  -- Sales
+CREATE USER 'abigael'@'%' IDENTIFIED BY 'securepass';    -- Manager
+CREATE USER 'arwa'@'%' IDENTIFIED BY 'pass456';     -- Customer care
+
+-- Assign roles
+GRANT sales TO 'sarah'@'%';
+GRANT manager TO 'abigael'@'%';
+GRANT customer_care TO 'arwa'@'%';
+
+-- Activate roles by default
+SET DEFAULT ROLE sales TO 'sarah'@'%';
+SET DEFAULT ROLE manager TO 'abigael'@'%';
+SET DEFAULT ROLE customer_care TO 'arwa'@'%';
+
+-- Admin has full access
+GRANT ALL PRIVILEGES ON bookstore_db.* TO admin;
+
+-- Sales: Can access customer, cust_order, order_line
+GRANT SELECT, INSERT, UPDATE ON bookstore.customers TO sales;
+GRANT SELECT, INSERT, UPDATE ON bookstore.cust_order TO sales;
+GRANT SELECT, INSERT ON bookstore.order_lines TO sales;
+
+-- Manager: Can manage books and stock
+GRANT SELECT, INSERT, UPDATE, DELETE ON bookstore_db.book TO manager;
+GRANT SELECT ON bookstore.publisher TO manager;
+GRANT SELECT ON bookstore.author TO manager;
+
+-- Customer Service: Can only read customer and order info
+GRANT SELECT ON bookstore.customers TO customer_care;
+GRANT SELECT ON bookstore.order_status TO customer_care;
+
+-- Show all roles
+SELECT role, host FROM mysql.role;
+
+
