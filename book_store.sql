@@ -178,4 +178,21 @@ GRANT SELECT ON bookstore.order_status TO customer_care;
 -- Show all roles
 SELECT role, host FROM mysql.role;
 
+-- querying the data to extract meaningful insights
 
+-- 1 Get Total Number of Orders
+SELECT COUNT(*) AS total_orders FROM customer_orders;
+ 
+-- 2. Get customers with Most Orders
+SELECT c.Customer_Name, COUNT(co.order_id) AS orders_count
+FROM Customers c
+JOIN customer_orders co ON co.customer_id = c.Customer_id
+GROUP BY c.Customer_Name
+ORDER BY orders_count DESC
+LIMIT 5;
+
+-- 3.Get orders by status
+SELECT os.status_name, COUNT(*) AS total_orders
+FROM customer_orders co
+JOIN Order_Status os ON co.order_status_id = os.order_status_id
+GROUP BY os.status_name;
